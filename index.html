@@ -5,18 +5,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>python-telegram-bot Example WebApp</title>
+    <title>Scanner</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .default {
+        display: hidden
+      }
+
+      .span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.2rem;
+        color: white;
+        font-weight: 600;
+        background-color: #00b649;
+        border-radius: 4.38rem;
+      }
+
+      .happy {
+        background: linear-gradient(to right, #00cd39, #00b649);
+      }
+
+      .sad {
+        background: linear-gradient(to right, #e10505, #f92104);
+      }
+
+      .button {
+        background: linear-gradient(to right, #033bff, #109bff);
+        border: none;
+        outline: none;
+        margin-top: 2rem;
+      }
+
+      .circle {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: white;
+        color: #00b649;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tick {
+        transform: translateY(0.01rem); /* You can adjust the number of pixels as needed */
+      }
+
+      .url {
+        background-color: #f1f1f1;
+        border-radius: 17px; /* Note: `dp` is a unit used in Android development. In CSS, we use `px` for pixels. */
+        padding: 1rem 1.5rem;
+        max-width: 75vw;
+      }
+
+      .url a {
+        color: #0544e7;
+        font-size: 0.75rem; /* 12px / 16px = 0.75rem */
+        text-decoration: none;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      #message {
+        margin-top: 1rem;
+        max-width: 75vw;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-align: center;
+        color: var(--tg-theme-text-color);
+      }
+
+      #happy,#sad,#url,#message,#button {
+        display: none;
+      }
+
+      #message {
+      margin-top: 1rem;
+      max-width: 75vw;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-align: center;
+      color: var(--tg-theme-text-color);
+    }
+
+    </style>
 </head>
 <script type="text/javascript">
-    Telegram.WebApp.showScanQrPopup('Test QR', function (text) {
-        Telegram.WebApp.sendData(JSON.stringify({url: text}));
-        return true;
-    })
+    function showQrScanner() {
+        Telegram.WebApp.showScanQrPopup('Test QR', function (text) {
+            Telegram.WebApp.sendData(JSON.stringify({url: text}));
+            return true;
+        })
+    };
+
+    function handleClick() {
+        showQrScanner();
+    };
+
+    showQrScanner();
     Telegram.WebApp.ready();
 </script>
 <body style="background-color: var(--tg-theme-bg-color);">
-    <div style="color: var(--tg-theme-text-color);">Test</div>
+    <div class="container">
+        <button type="button" id="button" class="span button" onclick="handleClick()">
+            <span>
+              Scan QR code again
+            </span>
+          </button>
+    </div>
 </body>
 <script type="text/javascript">
     Telegram.WebApp.expand();
