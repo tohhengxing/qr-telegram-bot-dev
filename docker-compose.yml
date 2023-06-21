@@ -1,0 +1,11 @@
+version:  '3'
+
+services:
+  web:
+    image: nginx
+    volumes:
+      - "./index.html:/usr/share/nginx/html/index.html"
+      - "./check-mark.svg:/usr/share/nginx/html/check-mark.svg"
+    ports:
+      - "8080:80"
+
