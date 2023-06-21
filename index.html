@@ -19,7 +19,7 @@
     // });
 
     Telegram.WebApp.ready();
-    Teletram.WebApp.showScanQrPopup('Test QR', function (text) {
+    Telegram.WebApp.showScanQrPopup('Test QR', function (text) {
         Telegram.WebApp.sendData(JSON.stringify({url: text}));
         return true;
     })
