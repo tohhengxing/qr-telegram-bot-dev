@@ -18,12 +18,12 @@
     //     document.body.style.background = color.hexString;
     // });
 
-    Telegram.WebApp.ready();
+
     Telegram.WebApp.showScanQrPopup('Test QR', function (text) {
         Telegram.WebApp.sendData(JSON.stringify({url: text}));
         return true;
     })
-    Telegram.WebApp.close();
+    Telegram.WebApp.ready();
     // Telegram.WebApp.MainButton.setText('Scan').show().onClick(function () {
     //     const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
     //     Telegram.WebApp.sendData(data);
